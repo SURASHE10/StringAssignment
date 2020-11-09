@@ -1,0 +1,327 @@
+//5. Write a program which prints the length of each word in a sentence.
+// Input: I am a Java programmer
+// Output: 1 2 1 4 10
+
+
+class CountCharInEachWords { 
+	static void count(String str) 
+	{ 
+		// Create an char array of given String 
+		char[] ch = str.toCharArray(); 
+		for (int i = 0; i < ch.length; i++) { 
+
+			// Declare an String with empty initialization 
+			String s = ""; 
+
+			// When the character is not space 
+			while (i < ch.length && ch[i] != ' ') { 
+
+				// concat with the declared String 
+				s = s + ch[i]; 
+				i++; 
+			} 
+
+			if (s.length() > 0) 
+				System.out.println(s + "->" + s.length());			 
+		} 
+	} 
+	public static void main(String[] args) 
+	{ 
+		String str = "I am a Java programmer"; 
+		count(str); 
+	} 
+} 
+
+==================================================================================
+
+public class CountVowelConsonant {
+
+    public static void main(String[] args) {
+        String line = "Hello world 37 1!";
+        int vowels = 0, consonants = 0, digits = 0, spaces = 0;
+
+        line = line.toLowerCase();
+        for(int i = 0; i < line.length(); ++i)
+        {
+            char ch = line.charAt(i);
+            if(ch == 'a' || ch == 'e' || ch == 'i'
+                || ch == 'o' || ch == 'u') {
+                ++vowels;
+            }
+            else if((ch >= 'a'&& ch <= 'z')) {
+                ++consonants;
+            }
+            else if( ch >= '0' && ch <= '9')
+            {
+                ++digits;
+            }
+            else if (ch ==' ')
+            {
+                ++spaces;
+            }
+        }
+
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+        System.out.println("Digits: " + digits);
+        System.out.println("White spaces: " + spaces);
+    }
+}
+================================================================================
+
+public static String removeConsecutiveChars(String str) {
+
+
+        if (str == null) {
+            return null;
+        }
+
+        int strLen = str.length();
+        if (strLen <= 1) {
+            return str;
+        }
+
+        char[] strChar = str.toCharArray();
+        char temp = strChar[0];
+
+        StringBuilder stringBuilder = new StringBuilder(strLen);
+        for (int i = 1; i < strLen; i++) {
+
+            char val = strChar[i];
+            if (val != temp) {
+                stringBuilder.append(temp);
+                temp = val;
+            }
+        }
+        stringBuilder.append(temp);
+
+        return stringBuilder.toString();
+    }
+=========================================================================
+
+//3. Write a function to replace multiple consecutive occurrences of characters with a single character
+//Input : abccddde
+//Output : abcde
+//Input : aabbbbaaa
+//Output : aba 
+
+
+public class RemoveRepChar 
+{
+	static char ch;
+	public static void main(String[] args) 
+	{
+		String str="aabbbbccc";
+		char[] charArray = str.toCharArray();
+		int count=0;
+		for(int i=0;i<charArray.length;i++)
+		{
+           		 if(i!=0 )
+			{
+            			if(charArray[i]==ch)continue;        //ddddee
+            			if(charArray[i]==charArray[i-1]) 
+				{
+                		count++;
+                		if(count==1)
+				{
+                    			System.out.println(charArray[i]);
+                   			count=0;
+                   			ch=charArray[i];
+                		}   
+           		 }
+            		else
+			{
+                		count=0;//aabb
+
+           		 }
+           	 }
+
+
+        }
+
+    }
+
+}
+
+========================================================================
+
+//7. Given a string , output another string where the case of the characters is reversed. 
+import java.util.Scanner;
+class ReverseofaString
+{
+	public static void main(String[] arg)
+	{
+	ReverseofaString rev=new ReverseofaString();
+	Scanner sc=new Scanner(System.in);
+	System.out.print("Enter a string : ");
+	String  str=sc.nextLine();	
+	System.out.println("Reverse of a String  is : "+rev.reverse(str));
+	}
+	static String reverse(String s)
+	{
+	String rev="";
+	for(int j=s.length();j>0;--j)
+	{
+	rev=rev+(s.charAt(j-1)); 
+	}
+	return rev;
+	}
+}
+
+==================================================================================
+
+//8. Write a program to reverse a string.
+//Input : "hello"
+//Output : "olleh"
+//Input : "Hello World"
+//Output : "dlrow olleh" 
+
+import java.lang.*;
+import java.io.*;
+import java.util.*;
+ 
+class ReverseString 
+{
+	public static void main(String[] args)
+	{
+        	String input = "Hello World";
+		StringBuilder input1 = new StringBuilder();
+		
+ 		// append a string into StringBuilder input1
+        	input1.append(input);
+		
+ 
+       		 // reverse StringBuilder input1
+        	input1 = input1.reverse();
+		
+ 
+        	// print reversed String
+        	System.out.println(input1);
+		
+    }
+}
+===============================================================================
+// Java program to print common characters 
+// of two Strings in alphabetical order 
+import java.io.*; 
+import java.util.*; 
+
+ public class Simstrings 
+{ 
+	static final int MAX_CHAR = 26; 
+
+	static void printCommon(String s1, String s2) 
+	{ 
+	// two arrays of length 26 to store occurrence 
+		// of a letters alphabetically for each string 
+		int[] a1 = new int[MAX_CHAR]; 
+		int[] a2 = new int[MAX_CHAR]; 
+
+		int length1 = s1.length(); 
+		int length2 = s2.length(); 
+
+		for (int i = 0 ; i < length1 ; i++) 
+		a1[s1.charAt(i) - 'a'] += 1; 
+
+		for (int i = 0 ; i < length2 ; i++) 
+		a2[s2.charAt(i) - 'a'] += 1; 
+
+		
+		for (int i = 0 ; i < MAX_CHAR ; i++) 
+		{ 
+			if (a1[i] != 0 && a2[i] != 0) 
+			{ 
+				
+				for (int j = 0 ; j < Math.min(a1[i], a2[i]) ; j++) 
+					System.out.print(((char)(i + 'a'))); 
+			} 
+		} 
+	} 
+
+	
+	public static void main(String[] args) throws IOException 
+	{ 
+		String s1 = "hello world", s2 = "lot of work"; 
+		printCommon(s1, s2); 
+	} 
+} 
+==================================================================================
+//String handling
+//=========================================
+/*public class StringEx
+{
+	public static void main(String args[])
+	{
+		String s1="java";
+		char ch[]={'k','o','m','a','l'};
+		String s2=new String(ch);
+		String s3=new String("valivadekar");
+		char[] helloArray = { 'h', 'e', 'l', 'l', 'o', '.' };
+      		String helloString = new String(helloArray);  
+		System.out.println( helloString );
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+	}
+}*/
+
+//String Length
+
+/*public class StringEx
+{
+	public static void main(String args[])
+	{
+		String palindrome="hello i m komal";
+		int len=palindrome.length();
+		
+		System.out.println("String Length is:" +len);
+	}
+}*/
+
+//String compareTo
+
+/*class StringEx
+{
+	public static void main(String args[])
+	{
+		String s1="hello";
+		String s2="hello";
+		String s3="hemlo";
+		String s4="flag";
+		System.out.println(s1.compareTo(s2));
+		System.out.println(s1.compareTo(s3));
+		System.out.println(s1.compareTo(s4));
+	}
+}*/
+
+//ReplaceString
+
+/*public class StringEx
+{
+	public static void main(String args[])
+	{
+		String s1="hello how are you";
+		String replaceString=s1.replace('h','t');
+		System.out.println(replaceString);
+	}
+}*/
+//StringToCharArray
+class StringEx
+{
+	public static void main(String args[])
+	{
+		String s1="Hello everyone";
+		char[] ch=s1.toCharArray();
+		for(int i=0;i<ch.length;i++)
+		{
+			System.out.print(ch[i]);
+		}
+	
+	}	
+}
+
+
+		
+
+
+
